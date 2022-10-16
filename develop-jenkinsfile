@@ -1,0 +1,18 @@
+pipeline {
+    agent {label 'MAVEN3 && NVM && PYTHON3'} 
+    triggers{
+        pollSCM(* * * * *)
+    }
+    stages {
+        stage('clone') { 
+            steps {
+                git url:'https://github.com/Sharmila-qt1/shopizer.git', branch : 'develop' 
+            }
+        }
+        stage('install') { 
+            steps {
+               sh 'mvn package'
+            }
+        }
+    }
+}
