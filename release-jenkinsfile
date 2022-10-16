@@ -1,7 +1,7 @@
 pipeline {
     agent {label 'MAVEN3 && NVM && PYTHON3'} 
     triggers{
-        cron('30 17 * * *')
+        pollSCM('* * * * *')
     }
     stages {
         stage('clone') { 
